@@ -8,6 +8,7 @@ import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
+import CategoryList from "./pages/list/CategoryList";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -16,25 +17,19 @@ function App() {
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
-          <Route path="/">
-            <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="users">
-              <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New inputs={userInputs} title="Add New User" />}
-              />
-            </Route>
-            <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
-              />
-            </Route>
+          <Route path="/" element={<Login />} />{" "}
+          {/* Display the Login component at the root URL */}
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/products">
+            <Route index element={<List />} />
+            <Route path=":userId" element={<Single />} />
+            <Route
+              path="new"
+              element={<New inputs={userInputs} title="Add New Product" />}
+            />
+          </Route>
+          <Route path="/category">
+            <Route index element={<CategoryList />} />
           </Route>
         </Routes>
       </BrowserRouter>
