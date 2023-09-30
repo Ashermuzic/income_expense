@@ -36,6 +36,13 @@
           color: #6439ff;
           margin-left: 10px;
           cursor: pointer;
+          background-color: rgb(245, 238, 238);
+          padding: 2px;
+          border-radius: 50%;
+
+          &:hover {
+            background-color: rgb(235, 225, 225);
+          }
         }
       }
     }

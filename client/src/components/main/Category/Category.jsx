@@ -1,67 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./category.scss";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
 import { DarkModeContext } from "../../../context/darkModeContext";
+import axios from "axios";
 
 function Category() {
-  const datas = [
-    {
-      id: 1,
-      name: "Food",
-    },
-    {
-      id: 2,
-      name: "Clothing",
-    },
-    {
-      id: 3,
-      name: "Electronic",
-    },
-    {
-      id: 4,
-      name: "Educational",
-    },
-    {
-      id: 5,
-      name: "Fashion",
-    },
-    {
-      id: 6,
-      name: "Books",
-    },
-    {
-      id: 7,
-      name: "Food",
-    },
-    {
-      id: 5,
-      name: "Fashion",
-    },
-    {
-      id: 6,
-      name: "Books",
-    },
-    {
-      id: 4,
-      name: "Educational",
-    },
-    {
-      id: 5,
-      name: "Fashion",
-    },
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8800/categories")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching data:", err);
+      });
+  }, []);
 
   return (
     <div className="category">
       <div className="categoryTitle">View All Categories</div>
       <div className="categoryBody">
         <div className="lists">
-          {datas.map((data) => {
+          {data.map((data) => {
             return (
               <div className="singleCategory">
-                {data.name}
-                <ExitToAppIcon className="icon" />
+                {data.category_name}
+                <ClearIcon className="icon" />
               </div>
             );
           })}
