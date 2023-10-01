@@ -7,6 +7,9 @@ import axios from "axios";
 
 function Category() {
   const [data, setData] = useState([]);
+  const [value, setValue] = useState({
+    name: "",
+  });
 
   useEffect(() => {
     axios
@@ -18,6 +21,25 @@ function Category() {
         console.error("Error fetching data:", err);
       });
   }, []);
+
+  console.log(value.name);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("category_name", value.name);
+
+    console.log(formData);
+
+    axios
+      .post("http://localhost:8800/categories", formData)
+      .then((res) => {
+        console.log("category posted");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="category">
@@ -36,8 +58,14 @@ function Category() {
 
         <div className="addCategory">
           <div className="box">
-            <input type="text" placeholder="add category" />
-            <AddIcon className="icon" />
+            <input
+              type="text"
+              placeholder="add category"
+              onChange={(e) => {
+                setValue({ name: e.target.value });
+              }}
+            />
+            <AddIcon className="icon" onClick={handleSubmit} />
           </div>
         </div>
       </div>
