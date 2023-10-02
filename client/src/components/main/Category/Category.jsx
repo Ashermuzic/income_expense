@@ -22,22 +22,36 @@ function Category() {
       });
   }, []);
 
-  console.log(value.name);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append("category_name", value.name);
-
-    console.log(formData);
-
+  const handleAddCategory = () => {
     axios
-      .post("http://localhost:8800/categories", formData)
+      .post("http://localhost:8800/categories", {
+        category_name: value.name,
+      })
       .then((res) => {
-        console.log("category posted");
+        // Update the state with the newly added category
+        setData([...data, res.data]);
+
+        // Clear the input field
+        setValue({ name: "" });
       })
       .catch((err) => {
-        console.log(err);
+        console.error("Error adding category:", err);
+      });
+  };
+
+  const handleDeleteCategory = (categoryId) => {
+    axios
+      .delete(`http://localhost:8800/categories/${categoryId}`)
+      .then(() => {
+        // Update the state with a function that uses the previous state
+        setData((prevData) => {
+          return prevData.filter(
+            (category) => category.category_id !== categoryId
+          );
+        });
+      })
+      .catch((err) => {
+        console.error("Error deleting category:", err);
       });
   };
 
@@ -46,11 +60,14 @@ function Category() {
       <div className="categoryTitle">View All Categories</div>
       <div className="categoryBody">
         <div className="lists">
-          {data.map((data) => {
+          {data.map((category) => {
             return (
               <div className="singleCategory">
-                {data.category_name}
-                <ClearIcon className="icon" />
+                {category.category_name}
+                <ClearIcon
+                  className="icon"
+                  onClick={() => handleDeleteCategory(category.category_id)}
+                />
               </div>
             );
           })}
@@ -61,11 +78,10 @@ function Category() {
             <input
               type="text"
               placeholder="add category"
-              onChange={(e) => {
-                setValue({ name: e.target.value });
-              }}
+              value={value.name}
+              onChange={(e) => setValue({ name: e.target.value })}
             />
-            <AddIcon className="icon" onClick={handleSubmit} />
+            <AddIcon className="icon" onClick={handleAddCategory} />
           </div>
         </div>
       </div>
