@@ -1,6 +1,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import category from "./routes/category.js";
+import product from "./routes/product.js";
 import multer from "multer";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -25,6 +26,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/categories", category);
+app.use("/products", product);
 
 app.listen(8800, () => {
   console.log("Connected!");
