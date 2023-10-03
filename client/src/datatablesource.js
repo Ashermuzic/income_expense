@@ -7,7 +7,11 @@ export const productColumns = [
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
+          <img
+            className="cellImg"
+            src={`localhost:8800/public/images/${params.row.product_img}`}
+            alt="avatar"
+          />
           {params.row.product_name}
         </div>
       );

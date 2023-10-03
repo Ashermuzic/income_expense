@@ -1,5 +1,6 @@
 import { query } from "express";
 import { db } from "../db.js";
+import path from "path";
 
 export const getProducts = (req, res) => {
   const q =
@@ -30,13 +31,14 @@ export const getProduct = (req, res) => {
 
 export const addProduct = (req, res) => {
   const q =
-    "INSERT INTO products (product_name, amount, description, category_id ) VALUES (?, ?, ?, ?)";
+    "INSERT INTO products (product_name, amount, description, category_id, product_img ) VALUES (?, ?, ?, ?, ?)";
 
   const values = [
     req.body.product_name,
     req.body.amount,
     req.body.description,
     req.body.category_id,
+    path.basename(req.file.path),
   ];
 
   db.query(q, values, (err, data) => {
