@@ -13,7 +13,7 @@ const EditProduct = ({ inputs, title }) => {
     amount: "",
     description: "",
     categoryId: null,
-    // product_img: "",
+    product_img: "",
   });
 
   const navigate = useNavigate();
@@ -30,6 +30,7 @@ const EditProduct = ({ inputs, title }) => {
             amount: res.data[0].amount,
             description: res.data[0].description,
             categoryId: res.data[0].category_id,
+            product_img: res.data[0].product_img,
           });
         }
       })
@@ -101,6 +102,7 @@ const EditProduct = ({ inputs, title }) => {
       amount: parseInt(formData.amount), // Convert amount to a number
       description: formData.description,
       category_id: formData.categoryId,
+      product_img: formData.product_img,
     };
 
     axios
@@ -127,7 +129,7 @@ const EditProduct = ({ inputs, title }) => {
               src={
                 file
                   ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : `http://localhost:8800/images/${formData.product_img}`
               }
               alt=""
             />

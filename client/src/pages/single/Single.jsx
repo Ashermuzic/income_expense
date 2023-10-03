@@ -13,7 +13,7 @@ const Single = () => {
     amount: "",
     description: "",
     category_name: "",
-    // product_img: "",
+    product_img: "",
   });
 
   const { productId } = useParams();
@@ -29,6 +29,7 @@ const Single = () => {
             amount: res.data[0].amount,
             description: res.data[0].description,
             category_name: res.data[0].category_name,
+            product_img: res.data[0].product_img,
           });
         }
       })
@@ -55,7 +56,7 @@ const Single = () => {
             <h1 className="title">Information</h1>
             <div className="item">
               <img
-                src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                src={`http://localhost:8800/images/${data.product_img}`}
                 alt=""
                 className="itemImg"
               />

@@ -24,6 +24,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// Serve images from the "public/images" directory
+app.use("/images", express.static("public/images"));
+
 app.use("/categories", category);
 app.use("/products", product);
 
