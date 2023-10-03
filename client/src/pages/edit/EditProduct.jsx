@@ -1,12 +1,12 @@
-import "./new.scss";
+import "./edit.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const New = ({ inputs, title }) => {
+const EditProduct = ({ inputs, title }) => {
   const [file, setFile] = useState("");
   const [formData, setFormData] = useState({
     product_name: "",
@@ -17,6 +17,26 @@ const New = ({ inputs, title }) => {
   });
 
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8800/products/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          setFormData({
+            ...formData,
+            product_name: res.data[0].product_name,
+            amount: res.data[0].amount,
+            description: res.data[0].description,
+            categoryId: res.data[0].category_id,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const [cat, setCat] = useState([]);
 
@@ -63,7 +83,14 @@ const New = ({ inputs, title }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
+
+  const getCategoryName = (categoryId) => {
+    const category = cat.find(
+      (category) => category.category_id === categoryId
+    );
+    return category ? category.category_name : "";
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -77,7 +104,7 @@ const New = ({ inputs, title }) => {
     };
 
     axios
-      .post("http://localhost:8800/products/", productData)
+      .put(`http://localhost:8800/products/${id}`, productData)
       .then((res) => {
         navigate("/products");
       })
@@ -106,17 +133,8 @@ const New = ({ inputs, title }) => {
             />
 
             <div className="dropDown">
-              <select name="categoryId" onChange={handleInputChange}>
-                <option value="">Select a category</option>{" "}
-                {cat.map((category) => (
-                  <option
-                    key={category.category_id}
-                    value={category.category_id}
-                  >
-                    {category.category_name}
-                  </option>
-                ))}
-              </select>
+              <div>Category: </div>
+              <div>{getCategoryName(formData.categoryId)}</div>
             </div>
           </div>
           <div className="right">
@@ -136,15 +154,26 @@ const New = ({ inputs, title }) => {
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  <input
-                    type={input.type}
-                    name={input.name}
-                    placeholder={input.placeholder}
-                    onChange={handleInputChange}
-                  />
+                  {input.name === "amount" ? (
+                    <input
+                      type={input.type}
+                      name={input.name}
+                      value={formData[input.name]}
+                      placeholder={input.placeholder}
+                      readOnly // Add the readOnly attribute here
+                    />
+                  ) : (
+                    <input
+                      type={input.type}
+                      name={input.name}
+                      value={formData[input.name]}
+                      placeholder={input.placeholder}
+                      onChange={handleInputChange}
+                    />
+                  )}
                 </div>
               ))}
-              <button type="submit">Send</button>
+              <button type="submit">Update</button>
             </form>
           </div>
         </div>
@@ -153,4 +182,4 @@ const New = ({ inputs, title }) => {
   );
 };
 
-export default New;
+export default EditProduct;

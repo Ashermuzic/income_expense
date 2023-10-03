@@ -2,7 +2,10 @@ import { query } from "express";
 import { db } from "../db.js";
 
 export const getProducts = (req, res) => {
-  const q = "SELECT * FROM products";
+  const q =
+    "SELECT p.*, p.product_id AS id, c.category_name " +
+    "FROM products p " +
+    "INNER JOIN income_categories c ON p.category_id = c.category_id";
 
   db.query(q, (err, data) => {
     if (err) return res.status(500).json(err);
@@ -12,7 +15,11 @@ export const getProducts = (req, res) => {
 };
 
 export const getProduct = (req, res) => {
-  const q = "SELECT * FROM products WHERE product_id = ?";
+  const q =
+    "SELECT p.*, p.product_id AS id, c.category_name " +
+    "FROM products p " +
+    "INNER JOIN income_categories c ON p.category_id = c.category_id " +
+    "WHERE p.product_id = ?";
 
   db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err);
@@ -31,8 +38,6 @@ export const addProduct = (req, res) => {
     req.body.description,
     req.body.category_id,
   ];
-
-  console.log(values);
 
   db.query(q, values, (err, data) => {
     if (err) return res.status(500).json(err);
@@ -67,6 +72,6 @@ export const deleteProduct = (req, res) => {
       return res.status(500).json(err);
     }
 
-    return res.json("Product has been deleted.");
+    return res.status(200).json("Product has been deleted.");
   });
 };
