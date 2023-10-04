@@ -1,6 +1,15 @@
 import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
+import BuildOutlinedIcon from "@mui/icons-material/BuildOutlined";
+import MoneyOffOutlinedIcon from "@mui/icons-material/MoneyOffOutlined";
+import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
+import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
@@ -52,7 +61,7 @@ const Sidebar = () => {
                 background: isActive("/products") ? "#9385db38" : "",
               }}
             >
-              <StoreIcon className="icon" />
+              <LocalMallOutlinedIcon className="icon" />
               <span>Products</span>
             </li>
           </Link>
@@ -62,7 +71,7 @@ const Sidebar = () => {
                 background: isActive("/incomes") ? "#9385db38" : "",
               }}
             >
-              <CreditCardIcon className="icon" />
+              <MonetizationOnOutlinedIcon className="icon" />
               <span>Income</span>
             </li>
           </Link>
@@ -71,7 +80,7 @@ const Sidebar = () => {
               background: isActive("/expense") ? "#9385db38" : "",
             }}
           >
-            <LocalShippingIcon className="icon" />
+            <ReceiptOutlinedIcon className="icon" />
             <span>Expense</span>
           </li>
           <p className="title">USEFUL</p>
@@ -80,12 +89,16 @@ const Sidebar = () => {
             <span>Stats</span>
           </li>
           <li>
-            <CreditCardIcon className="icon" />
+            <HistoryOutlinedIcon className="icon" />
             <span>History</span>
           </li>
           <li>
-            <PsychologyOutlinedIcon className="icon" />
+            <FlagOutlinedIcon className="icon" />
             <span>Goals</span>
+          </li>
+          <li>
+            <BuildOutlinedIcon className="icon" />
+            <span>Tools</span>
           </li>
           <Link to="/category" style={{ textDecoration: "none" }}>
             <li
@@ -93,18 +106,18 @@ const Sidebar = () => {
                 background: isActive("/category") ? "#9385db38" : "",
               }}
             >
-              <NotificationsNoneIcon className="icon" />
+              <CategoryOutlinedIcon className="icon" />
               <span>Category</span>
             </li>
           </Link>
-          <p className="title">SERVICE</p>
-          <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>System Health</span>
-          </li>
+          <p className="title">PREFERENCES</p>
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
+          </li>
+          <li>
+            <NotificationsNoneIcon className="icon" />
+            <span>Notifications</span>
           </li>
           <p className="title">USER</p>
           <li>
