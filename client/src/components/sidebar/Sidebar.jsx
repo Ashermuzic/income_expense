@@ -56,14 +56,16 @@ const Sidebar = () => {
               <span>Products</span>
             </li>
           </Link>
-          <li
-            style={{
-              background: isActive("/income") ? "#9385db38" : "",
-            }}
-          >
-            <CreditCardIcon className="icon" />
-            <span>Income</span>
-          </li>
+          <Link to="/incomes" style={{ textDecoration: "none" }}>
+            <li
+              style={{
+                background: isActive("/incomes") ? "#9385db38" : "",
+              }}
+            >
+              <CreditCardIcon className="icon" />
+              <span>Income</span>
+            </li>
+          </Link>
           <li
             style={{
               background: isActive("/expense") ? "#9385db38" : "",

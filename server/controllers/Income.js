@@ -3,9 +3,10 @@ import { db } from "../db.js";
 
 export const getIncomes = (req, res) => {
   const q =
-    "SELECT i.*, p.product_img " +
+    "SELECT i.income_id AS id, i.*, p.product_name, p.product_img, c.category_name " +
     "FROM income i " +
-    "INNER JOIN products p ON i.product_id = p.product_id";
+    "INNER JOIN products p ON i.product_id = p.product_id " +
+    "INNER JOIN income_categories c ON p.category_id = c.category_id";
 
   db.query(q, (err, data) => {
     if (err) return res.status(500).json(err);
@@ -18,9 +19,10 @@ export const getIncome = (req, res) => {
   const incomeId = req.params.id; // Assuming you pass income_id as a URL parameter
 
   const q =
-    "SELECT i.*, p.product_img " +
+    "SELECT i.income_id AS id, i.*, p.product_name, p.product_img, c.category_name " +
     "FROM income i " +
     "INNER JOIN products p ON i.product_id = p.product_id " +
+    "INNER JOIN income_categories c ON p.category_id = c.category_id " +
     "WHERE i.income_id = ?";
 
   db.query(q, [incomeId], (err, data) => {
