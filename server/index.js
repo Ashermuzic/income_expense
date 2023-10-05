@@ -1,6 +1,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import category from "./routes/category.js";
+import incomeCategory from "./routes/incomeCategory.js";
+import expenseCategory from "./routes/expenseCategory.js";
 import product from "./routes/product.js";
 import income from "./routes/income.js";
 import multer from "multer";
@@ -28,7 +29,8 @@ app.use(cors(corsOptions));
 // Serve images from the "public/images" directory
 app.use("/images", express.static("public/images"));
 
-app.use("/categories", category);
+app.use("/categories", incomeCategory);
+app.use("/expenseCategories", expenseCategory);
 app.use("/products", product);
 app.use("/incomes", income);
 

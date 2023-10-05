@@ -4,7 +4,7 @@ import {
   addCategory,
   deleteCategory,
   getCategories,
-} from "../controllers/Category.js";
+} from "../controllers/ExpenseCategory.js";
 const router = express.Router();
 
 router.get("/", getCategories);
