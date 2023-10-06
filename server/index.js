@@ -4,6 +4,7 @@ import incomeCategory from "./routes/incomeCategory.js";
 import expenseCategory from "./routes/expenseCategory.js";
 import product from "./routes/product.js";
 import income from "./routes/income.js";
+import expense from "./routes/expense.js";
 import multer from "multer";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -33,6 +34,7 @@ app.use("/categories", incomeCategory);
 app.use("/expenseCategories", expenseCategory);
 app.use("/products", product);
 app.use("/incomes", income);
+app.use("/expense", expense);
 
 app.listen(8800, () => {
   console.log("Connected!");
