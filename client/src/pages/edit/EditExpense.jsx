@@ -6,13 +6,17 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const EditProduct = ({ inputs, title }) => {
+const EditExpense = ({ inputs, title }) => {
   const [file, setFile] = useState("");
   const [formData, setFormData] = useState({
-    product_name: "",
+    expense_name: "",
     amount: "",
+    price: "",
     description: "",
+    provider_name: "",
+    provider_info: "",
     categoryId: null,
+    category_name: "",
     product_img: "",
   });
 
@@ -21,16 +25,20 @@ const EditProduct = ({ inputs, title }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8800/products/${id}`)
+      .get(`http://localhost:8800/expense/${id}`)
       .then((res) => {
         if (res.status === 200) {
           setFormData({
             ...formData,
-            product_name: res.data[0].product_name,
+            expense_name: res.data[0].expense_name,
             amount: res.data[0].amount,
+            price: res.data[0].price,
             description: res.data[0].description,
             categoryId: res.data[0].category_id,
+            category_name: res.data[0].category_name,
             product_img: res.data[0].product_img,
+            provider_name: res.data[0].provider_name,
+            provider_info: res.data[0].provider_info,
           });
         }
       })
@@ -73,7 +81,7 @@ const EditProduct = ({ inputs, title }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8800/categories")
+      .get("http://localhost:8800/expense/cat")
       .then((res) => {
         if (res.status === 200) {
           setCat(res.data);
@@ -98,24 +106,20 @@ const EditProduct = ({ inputs, title }) => {
 
     // Create an object with the expected structure
     const productData = {
-      product_name: formData.product_name,
-      amount: parseInt(formData.amount), // Convert amount to a number
+      provider_name: formData.provider_name,
+      provider_info: formData.provider_info,
       description: formData.description,
-      category_id: formData.categoryId,
-      product_img: formData.product_img,
     };
 
     axios
-      .put(`http://localhost:8800/products/${id}`, productData)
+      .put(`http://localhost:8800/expense/${id}`, productData)
       .then((res) => {
-        navigate("/products");
+        navigate("/expenses");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  // console.log(formData);
 
   return (
     <div className="new">
@@ -127,18 +131,9 @@ const EditProduct = ({ inputs, title }) => {
         </div>
         <div className="bottom">
           <div className="left">
-            <img
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : `http://localhost:8800/images/${formData.product_img}`
-              }
-              alt=""
-            />
-
             <div className="dropDown">
               <div>Category: </div>
-              <div>{getCategoryName(formData.categoryId)}</div>
+              <div>{formData.category_name}</div>
             </div>
           </div>
           <div className="right">
@@ -158,7 +153,9 @@ const EditProduct = ({ inputs, title }) => {
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  {input.name === "amount" ? (
+                  {input.name === "amount" ||
+                  input.name === "price" ||
+                  input.name === "expense_name" ? (
                     <input
                       type={input.type}
                       name={input.name}
@@ -186,4 +183,4 @@ const EditProduct = ({ inputs, title }) => {
   );
 };
 
-export default EditProduct;
+export default EditExpense;

@@ -29,6 +29,7 @@ app.use(cors(corsOptions));
 
 // Serve images from the "public/images" directory
 app.use("/images", express.static("public/images"));
+app.use("/attachments", express.static("public/attachments"));
 
 app.use("/categories", incomeCategory);
 app.use("/expenseCategories", expenseCategory);

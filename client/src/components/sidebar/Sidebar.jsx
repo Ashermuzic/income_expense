@@ -75,14 +75,16 @@ const Sidebar = () => {
               <span>Income</span>
             </li>
           </Link>
-          <li
-            style={{
-              background: isActive("/expense") ? "#9385db38" : "",
-            }}
-          >
-            <ReceiptOutlinedIcon className="icon" />
-            <span>Expense</span>
-          </li>
+          <Link to="/expenses" style={{ textDecoration: "none" }}>
+            <li
+              style={{
+                background: isActive("/expenses") ? "#9385db38" : "",
+              }}
+            >
+              <ReceiptOutlinedIcon className="icon" />
+              <span>Expense</span>
+            </li>
+          </Link>
           <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />

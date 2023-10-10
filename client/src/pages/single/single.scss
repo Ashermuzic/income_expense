@@ -66,6 +66,35 @@
                 color: green;
               }
             }
+
+            .attachedFiles {
+              // background-color: red;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              font-size: 18px;
+              font-weight: bold;
+              margin-top: 25px;
+
+              a {
+                .attachedDownload {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  border: 1px solid #cac4c4;
+                  border-radius: 5px;
+                  padding: 10px;
+                  color: rgb(112, 112, 131);
+                  cursor: pointer;
+
+                  &:hover {
+                    background-color: #f1ecec;
+                  }
+                }
+              }
+            }
           }
         }
       }

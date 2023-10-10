@@ -2,17 +2,26 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import IncomeList from "./pages/list/IncomeList";
+import ExpenseList from "./pages/list/ExpenseList";
 import Single from "./pages/single/Single";
 import SingleIncome from "./pages/single/SingleIncome";
+import SingleExpense from "./pages/single/SingleExpense";
 import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { incomeInputs, productInputs, userInputs } from "./formSource";
+import {
+  incomeInputs,
+  expenseInputs,
+  expenseEditInputs,
+  productInputs,
+} from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import CategoryList from "./pages/list/CategoryList";
 import EditProduct from "./pages/edit/EditProduct";
+import EditExpense from "./pages/edit/EditExpense";
 import NewIncome from "./pages/new/NewIncome";
+import NewExpense from "./pages/new/NewExpense";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -45,6 +54,22 @@ function App() {
               path="new"
               element={
                 <NewIncome inputs={incomeInputs} title="Add New Income" />
+              }
+            />
+          </Route>
+          <Route path="/expenses">
+            <Route index element={<ExpenseList />} />
+            <Route path=":expenseId" element={<SingleExpense />} />
+            <Route
+              path="new"
+              element={
+                <NewExpense inputs={expenseInputs} title="Add New Expense" />
+              }
+            />
+            <Route
+              path="edit/:id"
+              element={
+                <EditExpense inputs={expenseEditInputs} title="Edit Expense" />
               }
             />
           </Route>

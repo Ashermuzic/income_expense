@@ -98,3 +98,53 @@ export const incomeColumns = [
     },
   },
 ];
+
+export const expenseColumns = [
+  { field: "id", headerName: "ID", width: 70 },
+  {
+    field: "expense_name",
+    headerName: "Expense Name",
+    width: 170,
+  },
+  {
+    field: "amount",
+    headerName: "Amount",
+    width: 100,
+  },
+  {
+    field: "price",
+    headerName: "Price",
+    width: 100,
+  },
+  {
+    field: "description",
+    headerName: "Description",
+    width: 170,
+  },
+  {
+    field: "date",
+    headerName: "Transaction Date",
+    width: 150,
+    renderCell: (params) => {
+      // Parse the date string
+      const date = new Date(params.row.date);
+
+      // Format the date as YYYY-MM-DD
+      const formattedDate = date.toISOString().split("T")[0];
+
+      return <div>{formattedDate}</div>;
+    },
+  },
+  {
+    field: "category_name",
+    headerName: "Category",
+    width: 110,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus active`}>
+          {params.row.category_name}
+        </div>
+      );
+    },
+  },
+];
