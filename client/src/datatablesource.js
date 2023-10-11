@@ -99,6 +99,34 @@ export const incomeColumns = [
   },
 ];
 
+export const incomeHistoryColumns = [
+  { field: "id", headerName: "ID", width: 60 },
+  {
+    field: "product_name",
+    headerName: "Product Name",
+    width: 130,
+  },
+  {
+    field: "amount",
+    headerName: "Amount",
+    width: 80,
+  },
+  {
+    field: "date",
+    headerName: "Transaction Date",
+    width: 130,
+    renderCell: (params) => {
+      // Parse the date string
+      const date = new Date(params.row.date);
+
+      // Format the date as YYYY-MM-DD
+      const formattedDate = date.toISOString().split("T")[0];
+
+      return <div>{formattedDate}</div>;
+    },
+  },
+];
+
 export const expenseColumns = [
   { field: "id", headerName: "ID", width: 70 },
   {
@@ -145,6 +173,34 @@ export const expenseColumns = [
           {params.row.category_name}
         </div>
       );
+    },
+  },
+];
+
+export const expenseHistoryColumns = [
+  { field: "id", headerName: "ID", width: 60 },
+  {
+    field: "expense_name",
+    headerName: "Product Name",
+    width: 130,
+  },
+  {
+    field: "amount",
+    headerName: "Amount",
+    width: 80,
+  },
+  {
+    field: "date",
+    headerName: "Transaction Date",
+    width: 130,
+    renderCell: (params) => {
+      // Parse the date string
+      const date = new Date(params.row.date);
+
+      // Format the date as YYYY-MM-DD
+      const formattedDate = date.toISOString().split("T")[0];
+
+      return <div>{formattedDate}</div>;
     },
   },
 ];
