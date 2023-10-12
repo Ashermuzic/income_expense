@@ -23,6 +23,7 @@ import EditProduct from "./pages/edit/EditProduct";
 import EditExpense from "./pages/edit/EditExpense";
 import NewIncome from "./pages/new/NewIncome";
 import NewExpense from "./pages/new/NewExpense";
+import ToolList from "./pages/list/ToolList";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -73,6 +74,9 @@ function App() {
                 <EditExpense inputs={expenseEditInputs} title="Edit Expense" />
               }
             />
+          </Route>
+          <Route path="/tools">
+            <Route index element={<ToolList />} />
           </Route>
           <Route path="/category">
             <Route index element={<CategoryList />} />

@@ -90,24 +90,20 @@ const Sidebar = () => {
             <InsertChartIcon className="icon" />
             <span>Stats</span>
           </li>
-          <Link to="/history" style={{ textDecoration: "none" }}>
-            <li
-              style={{
-                background: isActive("/history") ? "#9385db38" : "",
-              }}
-            >
-              <HistoryOutlinedIcon className="icon" />
-              <span>History</span>
-            </li>
-          </Link>
           <li>
             <FlagOutlinedIcon className="icon" />
             <span>Goals</span>
           </li>
-          <li>
-            <BuildOutlinedIcon className="icon" />
-            <span>Tools</span>
-          </li>
+          <Link to="/tools" style={{ textDecoration: "none" }}>
+            <li
+              style={{
+                background: isActive("/tools") ? "#9385db38" : "",
+              }}
+            >
+              <BuildOutlinedIcon className="icon" />
+              <span>Tools</span>
+            </li>
+          </Link>
           <Link to="/category" style={{ textDecoration: "none" }}>
             <li
               style={{
@@ -116,6 +112,16 @@ const Sidebar = () => {
             >
               <CategoryOutlinedIcon className="icon" />
               <span>Category</span>
+            </li>
+          </Link>
+          <Link to="/history" style={{ textDecoration: "none" }}>
+            <li
+              style={{
+                background: isActive("/history") ? "#9385db38" : "",
+              }}
+            >
+              <HistoryOutlinedIcon className="icon" />
+              <span>History</span>
             </li>
           </Link>
           <p className="title">PREFERENCES</p>
