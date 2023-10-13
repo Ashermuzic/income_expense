@@ -90,10 +90,16 @@ const Sidebar = () => {
             <InsertChartIcon className="icon" />
             <span>Stats</span>
           </li>
-          <li>
-            <FlagOutlinedIcon className="icon" />
-            <span>Goals</span>
-          </li>
+          <Link to="/goals" style={{ textDecoration: "none" }}>
+            <li
+              style={{
+                background: isActive("/goals") ? "#9385db38" : "",
+              }}
+            >
+              <FlagOutlinedIcon className="icon" />
+              <span>Goals</span>
+            </li>
+          </Link>
           <Link to="/tools" style={{ textDecoration: "none" }}>
             <li
               style={{
