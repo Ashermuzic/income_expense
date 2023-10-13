@@ -11,6 +11,7 @@ const SingleIncome = () => {
   const [data, setData] = useState({
     product_name: "",
     amount: "",
+    price: "",
     description: "",
     category_name: "",
     product_img: "",
@@ -28,6 +29,7 @@ const SingleIncome = () => {
             ...data,
             product_name: res.data[0].product_name,
             amount: res.data[0].amount,
+            price: res.data[0].price,
             description: res.data[0].description,
             category_name: res.data[0].category_name,
             product_img: res.data[0].product_img,
@@ -61,6 +63,10 @@ const SingleIncome = () => {
                 <div className="detailItem">
                   <span className="itemKey">Amount:</span>
                   <span className="itemValue">{data.amount}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Sold for:</span>
+                  <span className="itemValue">{data.price} birr</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Description: </span>
