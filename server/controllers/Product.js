@@ -50,13 +50,14 @@ export const addProduct = (req, res) => {
 
 export const updateProduct = (req, res) => {
   const productId = req.params.id; // Assuming you are passing the product_id as a URL parameter
+  const amount = req.body.amount;
   const newProductName = req.body.product_name;
   const newDescription = req.body.description;
 
   const q =
-    "UPDATE products SET product_name=?, description=? WHERE product_id=?";
+    "UPDATE products SET product_name=?, amount=?, description=? WHERE product_id=?";
 
-  const values = [newProductName, newDescription, productId];
+  const values = [newProductName, amount, newDescription, productId];
 
   db.query(q, values, (err, data) => {
     if (err) return res.status(500).json(err);

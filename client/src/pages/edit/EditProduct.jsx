@@ -158,23 +158,14 @@ const EditProduct = ({ inputs, title }) => {
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  {input.name === "amount" ? (
-                    <input
-                      type={input.type}
-                      name={input.name}
-                      value={formData[input.name]}
-                      placeholder={input.placeholder}
-                      readOnly // Add the readOnly attribute here
-                    />
-                  ) : (
-                    <input
-                      type={input.type}
-                      name={input.name}
-                      value={formData[input.name]}
-                      placeholder={input.placeholder}
-                      onChange={handleInputChange}
-                    />
-                  )}
+
+                  <input
+                    type={input.type}
+                    name={input.name}
+                    value={formData[input.name]}
+                    placeholder={input.placeholder}
+                    onChange={handleInputChange}
+                  />
                 </div>
               ))}
               <button type="submit">Update</button>
