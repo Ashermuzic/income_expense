@@ -12,6 +12,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   incomeInputs,
   expenseInputs,
+  goalInputs,
   expenseEditInputs,
   productInputs,
 } from "./formSource";
@@ -23,6 +24,7 @@ import EditProduct from "./pages/edit/EditProduct";
 import EditExpense from "./pages/edit/EditExpense";
 import NewIncome from "./pages/new/NewIncome";
 import NewExpense from "./pages/new/NewExpense";
+import NewGoal from "./pages/new/NewGoal";
 import ToolList from "./pages/list/ToolList";
 import GoalList from "./pages/list/GoalList";
 
@@ -78,6 +80,10 @@ function App() {
           </Route>
           <Route path="/goals">
             <Route index element={<GoalList />} />
+            <Route
+              path="new"
+              element={<NewGoal inputs={goalInputs} title="Add New Goal" />}
+            />
           </Route>
           <Route path="/tools">
             <Route index element={<ToolList />} />

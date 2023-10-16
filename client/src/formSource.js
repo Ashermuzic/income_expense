@@ -104,6 +104,44 @@ export const expenseInputs = [
   },
 ];
 
+export const goalInputs = [
+  {
+    id: 1,
+    label: "Goal name",
+    name: "goal_name",
+    type: "text",
+    placeholder: "increase monthly income ...",
+  },
+  {
+    id: 2,
+    label: "Target Price",
+    name: "target_price",
+    type: "number",
+    placeholder: "20,000",
+  },
+  {
+    id: 3,
+    label: "Start Date",
+    name: "start_date",
+    type: "date",
+    placeholder: "10/26/2016",
+  },
+  {
+    id: 4,
+    label: "End Date",
+    name: "deadline_date",
+    type: "date",
+    placeholder: "10/26/2016",
+  },
+  {
+    id: 5,
+    label: "Description",
+    name: "description",
+    type: "text",
+    placeholder: "description ...",
+  },
+];
+
 export const expenseEditInputs = [
   {
     id: 1,
