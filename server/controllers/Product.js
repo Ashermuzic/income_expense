@@ -78,3 +78,38 @@ export const deleteProduct = (req, res) => {
     return res.status(200).json("Product has been deleted.");
   });
 };
+
+// helpers
+
+export const getDangerProducts = (req, res) => {
+  const q = `
+    SELECT p.*, c.category_name
+    FROM products p
+    INNER JOIN income_categories c ON p.category_id = c.category_id
+    WHERE p.amount < 10;
+  `;
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).json(err);
+
+    return res.status(200).json(data);
+  });
+};
+
+export const getDangerProductCount = (req, res) => {
+  const q = `
+    SELECT COUNT(*) AS dangerProductCount
+    FROM products
+    WHERE amount < 10;
+  `;
+
+  db.query(q, (err, results) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+
+    const dangerProductCount = results[0].dangerProductCount || 0;
+
+    return res.status(200).json({ count: dangerProductCount });
+  });
+};

@@ -104,7 +104,7 @@ export const incomeHistoryColumns = [
   {
     field: "product_name",
     headerName: "Product Name",
-    width: 130,
+    width: 120,
   },
   {
     field: "amount",
@@ -182,7 +182,7 @@ export const expenseHistoryColumns = [
   {
     field: "expense_name",
     headerName: "Product Name",
-    width: 130,
+    width: 120,
   },
   {
     field: "amount",

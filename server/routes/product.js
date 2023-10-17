@@ -8,6 +8,8 @@ import {
   getProduct,
   updateProduct,
   deleteProduct,
+  getDangerProducts,
+  getDangerProductCount,
 } from "../controllers/Product.js";
 const router = express.Router();
 
@@ -24,6 +26,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.get("/", getProducts);
+router.get("/danger", getDangerProducts); // for notification
+router.get("/count", getDangerProductCount); // for notification
 router.get("/:id", getProduct);
 router.post("/", upload.single("image"), addProduct);
 router.put("/:id", updateProduct);

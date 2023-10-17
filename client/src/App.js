@@ -4,6 +4,7 @@ import List from "./pages/list/List";
 import IncomeList from "./pages/list/IncomeList";
 import ExpenseList from "./pages/list/ExpenseList";
 import HistoryList from "./pages/list/HistoryList";
+import NotificationList from "./pages/list/NotificationList";
 import Single from "./pages/single/Single";
 import SingleIncome from "./pages/single/SingleIncome";
 import SingleExpense from "./pages/single/SingleExpense";
@@ -93,6 +94,9 @@ function App() {
           </Route>
           <Route path="/history">
             <Route index element={<HistoryList />} />
+          </Route>
+          <Route path="/notifications">
+            <Route index element={<NotificationList />} />
           </Route>
         </Routes>
       </BrowserRouter>
