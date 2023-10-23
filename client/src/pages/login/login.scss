@@ -1,3 +1,108 @@
-.login{
-    
+.pd {
+  padding: 40px 70px;
+}
+
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url("../../assets/img/Hexagon\ \(3\).svg");
+  background-position: center;
+  background-size: cover;
+  .loginNavbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .l-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #444;
+    }
+  }
+
+  .loginBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    .b-illustration {
+      width: 50%;
+      height: 450px;
+      background-image: url("../../assets/img/Upload-rafiki.png");
+      background-position: 0% 25%;
+      background-size: cover;
+    }
+
+    .b-form {
+      width: 50%;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      .form-title {
+        div {
+          font-size: 27px;
+          font-weight: 800;
+          letter-spacing: 2px;
+          color: #444;
+        }
+        p {
+          color: #888;
+        }
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .inputBox {
+          border: 1px solid #333;
+          width: 450px;
+          padding: 12px;
+          display: flex;
+          align-items: center;
+          .icon {
+            margin-right: 10px;
+            color: #6439ff;
+          }
+          input {
+            width: 450px;
+            outline: none;
+            border: none;
+            background: transparent;
+          }
+        }
+      }
+      .btn-box {
+        button {
+          padding: 10px 40px;
+          border: none;
+          border-radius: 30px;
+          font-size: 15px;
+          font-weight: 600;
+          background-color: #6439ff;
+          box-shadow: 3px 3px 5px rgb(136, 129, 129);
+          color: #fff;
+          &:hover {
+            background-color: #5432cc;
+          }
+          &:active {
+            box-shadow: 3px 3px 7px rgb(136, 129, 129);
+            transform: translate(1px, 1px);
+          }
+        }
+      }
+    }
+  }
+
+  .loginFooter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .l-footer-detail {
+      a {
+        margin-left: 5px;
+      }
+    }
+  }
 }
