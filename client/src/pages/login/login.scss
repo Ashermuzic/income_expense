@@ -73,6 +73,14 @@
           }
         }
       }
+      .error {
+        display: flex;
+        p {
+          padding: 3px;
+          background-color: rgba(255, 0, 0, 0.123);
+          color: red;
+        }
+      }
       .btn-box {
         button {
           padding: 10px 40px;
