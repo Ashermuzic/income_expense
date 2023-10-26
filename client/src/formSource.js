@@ -186,3 +186,48 @@ export const expenseEditInputs = [
     placeholder: "Additional info about the provider",
   },
 ];
+
+export const userEditInputs = [
+  {
+    id: 1,
+    label: "User Name",
+    name: "username",
+    type: "text",
+    placeholder: "Mr. Tolosa Abreham",
+  },
+  {
+    id: 2,
+    label: "Company Name",
+    name: "company_name",
+    type: "text",
+    placeholder: "XY Corporation",
+  },
+  {
+    id: 3,
+    label: "Phone",
+    name: "phone",
+    type: "text",
+    placeholder: "+ 111 111 222 333",
+  },
+  {
+    id: 4,
+    label: "Email",
+    name: "email",
+    type: "text",
+    placeholder: "ashersam116@gmail.com",
+  },
+  {
+    id: 5,
+    label: "Address",
+    name: "address",
+    type: "text",
+    placeholder: "Debrezeit Ethiopia",
+  },
+  {
+    id: 6,
+    label: "Role",
+    name: "role",
+    type: "text",
+    placeholder: "Owner",
+  },
+];

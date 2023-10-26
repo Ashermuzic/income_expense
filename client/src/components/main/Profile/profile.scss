@@ -19,6 +19,7 @@
     }
 
     .t-right {
+      position: relative;
       padding: 20px;
       -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
       box-shadow: 2px 4px 10px 1px rgba(167, 167, 167, 0.459);
@@ -44,6 +45,22 @@
           padding: 2px 5px;
           background-color: rgba(255, 217, 0, 0.158);
           color: goldenrod;
+        }
+      }
+
+      .pro-edit {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 5px 25px;
+        color: darkblue;
+        border-radius: 3px;
+        border: 1px dotted rgba(0, 0, 139, 0.596);
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(0, 0, 139, 0.055);
         }
       }
     }

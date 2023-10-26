@@ -16,6 +16,7 @@ import {
   goalInputs,
   expenseEditInputs,
   productInputs,
+  userEditInputs,
 } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
@@ -23,12 +24,14 @@ import { DarkModeContext } from "./context/darkModeContext";
 import CategoryList from "./pages/list/CategoryList";
 import EditProduct from "./pages/edit/EditProduct";
 import EditExpense from "./pages/edit/EditExpense";
+import EditUser from "./pages/edit/EditProfile";
 import NewIncome from "./pages/new/NewIncome";
 import NewExpense from "./pages/new/NewExpense";
 import NewGoal from "./pages/new/NewGoal";
 import ToolList from "./pages/list/ToolList";
 import GoalList from "./pages/list/GoalList";
 import ProfileList from "./pages/list/ProfileList";
+import EditProfile from "./pages/edit/EditProfile";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -103,6 +106,12 @@ function App() {
           </Route>
           <Route path="/profile">
             <Route index element={<ProfileList />} />
+            <Route
+              path="edit/:id"
+              element={
+                <EditProfile inputs={userEditInputs} title="Edit Profile" />
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>
