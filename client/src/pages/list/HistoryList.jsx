@@ -5,7 +5,10 @@ import Datatable from "../../components/datatable/Datatable";
 import History from "../../components/main/History/History";
 
 const HistoryList = () => {
-  return (
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
+  return isAuthenticated ? (
     <div className="list">
       <Sidebar />
       <div className="listContainer">
@@ -13,7 +16,7 @@ const HistoryList = () => {
         <History />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default HistoryList;

@@ -9,7 +9,7 @@ import Single from "./pages/single/Single";
 import SingleIncome from "./pages/single/SingleIncome";
 import SingleExpense from "./pages/single/SingleExpense";
 import New from "./pages/new/New";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import {
   incomeInputs,
   expenseInputs,
@@ -31,6 +31,8 @@ import GoalList from "./pages/list/GoalList";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
 
   return (
     <div className={darkMode ? "app dark" : "app"}>

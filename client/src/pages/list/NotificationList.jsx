@@ -4,7 +4,10 @@ import Navbar from "../../components/navbar/Navbar";
 import Notification from "../../components/main/Notification/Notification";
 
 const NotificationList = () => {
-  return (
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
+  return isAuthenticated ? (
     <div className="list">
       <Sidebar />
       <div className="listContainer">
@@ -12,7 +15,7 @@ const NotificationList = () => {
         <Notification />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default NotificationList;

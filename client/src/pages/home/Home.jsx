@@ -7,9 +7,13 @@ import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
 
 const Home = () => {
-  return (
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
+  return isAuthenticated ? (
     <div className="home">
       <Sidebar />
+
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
@@ -28,7 +32,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default Home;

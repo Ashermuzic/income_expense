@@ -1,18 +1,21 @@
-import "./list.scss"
-import Sidebar from "../../components/sidebar/Sidebar"
-import Navbar from "../../components/navbar/Navbar"
-import Datatable from "../../components/datatable/Datatable"
+import "./list.scss";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
+import Datatable from "../../components/datatable/Datatable";
 
 const List = () => {
-  return (
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
+  return isAuthenticated ? (
     <div className="list">
-      <Sidebar/>
+      <Sidebar />
       <div className="listContainer">
-        <Navbar/>
-        <Datatable/>
+        <Navbar />
+        <Datatable />
       </div>
     </div>
-  )
-}
+  ) : null;
+};
 
-export default List
+export default List;

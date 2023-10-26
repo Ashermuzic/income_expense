@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
 const NewIncome = ({ inputs, title }) => {
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
   const [file, setFile] = useState("");
   const [formData, setFormData] = useState({
     product_id: "", // Send product_id to the backend
@@ -75,7 +78,7 @@ const NewIncome = ({ inputs, title }) => {
     }
   };
 
-  return (
+  return isAuthenticated ? (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
@@ -133,7 +136,7 @@ const NewIncome = ({ inputs, title }) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default NewIncome;

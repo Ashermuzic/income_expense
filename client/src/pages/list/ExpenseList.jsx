@@ -4,7 +4,10 @@ import Navbar from "../../components/navbar/Navbar";
 import ExpenseTable from "../../components/datatable/ExpenseTable";
 
 const ExpenseList = () => {
-  return (
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
+  return isAuthenticated ? (
     <div className="list">
       <Sidebar />
       <div className="listContainer">
@@ -12,7 +15,7 @@ const ExpenseList = () => {
         <ExpenseTable />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default ExpenseList;

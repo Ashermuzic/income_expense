@@ -5,7 +5,10 @@ import Datatable from "../../components/datatable/Datatable";
 import Category from "../../components/main/Category/Category";
 
 const CategoryList = () => {
-  return (
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
+  return isAuthenticated ? (
     <div className="list">
       <Sidebar />
       <div className="listContainer">
@@ -13,7 +16,7 @@ const CategoryList = () => {
         <Category />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default CategoryList;

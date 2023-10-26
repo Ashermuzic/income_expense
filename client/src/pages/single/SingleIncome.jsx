@@ -8,6 +8,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SingleIncome = () => {
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
   const [data, setData] = useState({
     product_name: "",
     amount: "",
@@ -44,7 +47,7 @@ const SingleIncome = () => {
 
   console.log(data.date);
 
-  return (
+  return isAuthenticated ? (
     <div className="single">
       <Sidebar />
       <div className="singleContainer">
@@ -89,7 +92,7 @@ const SingleIncome = () => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default SingleIncome;

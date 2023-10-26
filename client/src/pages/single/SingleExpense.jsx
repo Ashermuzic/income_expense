@@ -9,6 +9,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SingleExpense = () => {
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
   const [data, setData] = useState({
     expense_name: "",
     amount: "",
@@ -47,7 +50,7 @@ const SingleExpense = () => {
       });
   }, []);
 
-  return (
+  return isAuthenticated ? (
     <div className="single">
       <Sidebar />
       <div className="singleContainer">
@@ -119,7 +122,7 @@ const SingleExpense = () => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default SingleExpense;

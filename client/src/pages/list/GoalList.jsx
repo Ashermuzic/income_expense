@@ -4,7 +4,10 @@ import Navbar from "../../components/navbar/Navbar";
 import Goal from "../../components/main/Goal/Goal";
 
 const GoalList = () => {
-  return (
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
+  return isAuthenticated ? (
     <div className="list">
       <Sidebar />
       <div className="listContainer">
@@ -12,7 +15,7 @@ const GoalList = () => {
         <Goal />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default GoalList;

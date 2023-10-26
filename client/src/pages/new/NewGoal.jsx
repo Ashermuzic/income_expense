@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
 const NewGoal = ({ inputs, title }) => {
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
   const [formData, setFormData] = useState({
     goal_name: "",
     target_price: "",
@@ -42,7 +45,7 @@ const NewGoal = ({ inputs, title }) => {
       });
   };
 
-  return (
+  return isAuthenticated ? (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
@@ -76,7 +79,7 @@ const NewGoal = ({ inputs, title }) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default NewGoal;

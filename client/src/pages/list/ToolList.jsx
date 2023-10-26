@@ -4,7 +4,10 @@ import Navbar from "../../components/navbar/Navbar";
 import Tool from "../../components/main/Tool/Tool";
 
 const ToolList = () => {
-  return (
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
+  return isAuthenticated ? (
     <div className="list">
       <Sidebar />
       <div className="listContainer">
@@ -12,7 +15,7 @@ const ToolList = () => {
         <Tool />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default ToolList;

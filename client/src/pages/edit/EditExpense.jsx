@@ -7,6 +7,9 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditExpense = ({ inputs, title }) => {
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
   const [file, setFile] = useState("");
   const [formData, setFormData] = useState({
     expense_name: "",
@@ -121,7 +124,7 @@ const EditExpense = ({ inputs, title }) => {
       });
   };
 
-  return (
+  return isAuthenticated ? (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
@@ -180,7 +183,7 @@ const EditExpense = ({ inputs, title }) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default EditExpense;

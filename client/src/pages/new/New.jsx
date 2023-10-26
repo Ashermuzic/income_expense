@@ -7,6 +7,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const New = ({ inputs, title }) => {
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
   const [file, setFile] = useState("");
   const [formData, setFormData] = useState({
     product_name: "",
@@ -86,7 +89,7 @@ const New = ({ inputs, title }) => {
       });
   };
 
-  return (
+  return isAuthenticated ? (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
@@ -150,7 +153,7 @@ const New = ({ inputs, title }) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default New;

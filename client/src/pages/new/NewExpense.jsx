@@ -6,6 +6,9 @@ import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
 const NewExpense = ({ inputs, title }) => {
+  const username = localStorage.getItem("username");
+  const isAuthenticated = !!username;
+
   const [formData, setFormData] = useState({
     expense_name: "",
     amount: "",
@@ -74,7 +77,7 @@ const NewExpense = ({ inputs, title }) => {
       });
   };
 
-  return (
+  return isAuthenticated ? (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
@@ -126,7 +129,7 @@ const NewExpense = ({ inputs, title }) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default NewExpense;
