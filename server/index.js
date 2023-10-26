@@ -6,6 +6,7 @@ import product from "./routes/product.js";
 import income from "./routes/income.js";
 import expense from "./routes/expense.js";
 import goal from "./routes/goal.js";
+import legalInfo from "./routes/legalInfo.js";
 import auth from "./routes/auth.js";
 import multer from "multer";
 import cors from "cors";
@@ -40,6 +41,7 @@ app.use("/incomes", income);
 app.use("/expense", expense);
 app.use("/goals", goal);
 app.use("/auth", auth);
+app.use("/legal", legalInfo);
 
 app.listen(8800, () => {
   console.log("Connected!");
