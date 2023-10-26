@@ -28,6 +28,7 @@ import NewExpense from "./pages/new/NewExpense";
 import NewGoal from "./pages/new/NewGoal";
 import ToolList from "./pages/list/ToolList";
 import GoalList from "./pages/list/GoalList";
+import ProfileList from "./pages/list/ProfileList";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -99,6 +100,9 @@ function App() {
           </Route>
           <Route path="/notifications">
             <Route index element={<NotificationList />} />
+          </Route>
+          <Route path="/profile">
+            <Route index element={<ProfileList />} />
           </Route>
         </Routes>
       </BrowserRouter>
