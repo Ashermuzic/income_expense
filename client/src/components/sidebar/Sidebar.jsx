@@ -20,7 +20,7 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 
@@ -31,6 +31,15 @@ const Sidebar = () => {
   // Define a function to check if a given path matches the current route
   const isActive = (path) => {
     return location.pathname === path;
+  };
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Remove the "username" item from localStorage
+    localStorage.removeItem("username");
+    // Redirect the user to the login page or wherever you want
+    navigate("/login");
   };
 
   return (
@@ -151,10 +160,16 @@ const Sidebar = () => {
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <li>
-            <ExitToAppIcon className="icon" />
-            <span>Logout</span>
-          </li>
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+            onClick={handleLogout}
+          >
+            <li>
+              <ExitToAppIcon className="icon" />
+              <span>Logout</span>
+            </li>
+          </Link>
         </ul>
       </div>
       <div className="bottom">
