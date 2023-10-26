@@ -3,6 +3,7 @@ import "./profile.scss";
 import girl from "../../../assets/img/christopher-campbell-rDEOVtE7vOs-unsplash.jpg";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import ClearIcon from "@mui/icons-material/Clear";
 
 function Profile() {
   const [user, setUser] = useState([]);
@@ -56,21 +57,49 @@ function Profile() {
         );
       })}
       <div className="bottom">
-        <div className="b-title">Legal Information</div>
-        <div className="b-detail">
-          Company Name: <p className="role">XY Corporation</p>
+        <div className="bottom-title">
+          <div className="b-title">Legal Information</div>
+          <div className="b-link">Add Info</div>
         </div>
         <div className="b-detail">
-          Date of Legalization: <p>2016 - 07 -11</p>
+          <div className="content-titles">
+            Company Name: <p className="role">XY Corporation</p>
+          </div>
+          <div className="d-icon">
+            <ClearIcon />
+          </div>
         </div>
         <div className="b-detail">
-          Business Address: <p>Debreziet Ethiopia / near the ABC building</p>
+          <div className="content-titles">
+            Date of Legalization: <p>2016 - 07 -11</p>
+          </div>
+          <div className="d-icon">
+            <ClearIcon />
+          </div>
         </div>
         <div className="b-detail">
-          Type of Business Entity: <p>Sole Proprietorship</p>
+          <div className="content-titles">
+            Business Address: <p>Debreziet Ethiopia / near the ABC building</p>
+          </div>
+          <div className="d-icon">
+            <ClearIcon />
+          </div>
         </div>
         <div className="b-detail">
-          Certified by: <p>Ethiopian quality assessment</p>
+          <div className="content-titles">
+            Type of Business Entity: <p>Sole Proprietorship</p>
+          </div>
+          <div className="d-icon">
+            <ClearIcon />
+          </div>
+        </div>
+        <div className="b-detail">
+          <div className="content-titles">
+            Certified by: <p>Ethiopian quality assessment</p>
+          </div>
+          <div className="d-icon">
+            <ClearIcon />
+          </div>
         </div>
       </div>
     </div>

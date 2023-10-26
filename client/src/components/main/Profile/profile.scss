@@ -70,25 +70,62 @@
     padding: 20px;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
     box-shadow: 2px 4px 10px 1px rgba(167, 167, 167, 0.411);
-    .b-title {
-      color: gray;
-      font-weight: 600;
-      font-size: 23px;
+    .bottom-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 10px;
+      .b-title {
+        color: gray;
+        font-weight: 600;
+        font-size: 23px;
+        margin-bottom: 10px;
+      }
+      .b-link {
+        text-decoration: none;
+        color: green;
+        font-size: 16px;
+        font-weight: 400;
+        border: 1px solid green;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
     }
 
     .b-detail {
       display: flex;
+      justify-content: space-between;
       margin-bottom: 10px;
-      p {
-        padding: 2px;
-        background-color: rgba(160, 157, 157, 0.164);
-        margin-left: 20px;
+      .content-titles {
+        display: flex;
+        p {
+          padding: 2px;
+          background-color: rgba(160, 157, 157, 0.164);
+          margin-left: 20px;
+        }
+        .role {
+          padding: 2px 5px;
+          background-color: rgba(0, 128, 0, 0.103);
+          color: green;
+        }
       }
-      .role {
-        padding: 2px 5px;
-        background-color: rgba(0, 128, 0, 0.103);
-        color: green;
+      .d-icon {
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6439ff;
+        border-radius: 5px;
+        background-color: rgb(245, 238, 238);
+        cursor: pointer;
+        opacity: 0.3;
+        transition: all 0.1s;
+
+        &:hover {
+          opacity: 1;
+          background-color: rgb(235, 225, 225);
+        }
       }
     }
   }
