@@ -61,6 +61,6 @@ export const deleteInfo = (req, res) => {
       return res.status(404).json({ message: "Info not found" });
     }
 
-    return res.status(204).json("Info deleted successfully");
+    return res.status(200).json("Info deleted successfully");
   });
 };

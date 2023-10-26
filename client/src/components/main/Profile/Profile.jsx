@@ -4,9 +4,20 @@ import girl from "../../../assets/img/christopher-campbell-rDEOVtE7vOs-unsplash.
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import ClearIcon from "@mui/icons-material/Clear";
+import AddIcon from "@mui/icons-material/Add";
 
 function Profile() {
   const [user, setUser] = useState([]);
+  const [info, setInfo] = useState([]);
+  const [showAdd, setShowAdd] = useState(true);
+  const [value, setValue] = useState({
+    info_title: "",
+    info_content: "",
+  });
+
+  const toggle = () => {
+    setShowAdd(!showAdd);
+  };
 
   useEffect(() => {
     axios
@@ -20,6 +31,50 @@ function Profile() {
         console.log(err);
       });
   }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8800/legal")
+      .then((res) => {
+        if (res.status == 200) {
+          setInfo(res.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const handleDelete = (InfoId) => {
+    axios
+      .delete(`http://localhost:8800/legal/${InfoId}`)
+      .then((res) => {
+        if (res.status === 200) {
+          window.location.reload(true);
+        } else {
+          console.log("Something went wrong");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleAddInfo = () => {
+    axios
+      .post("http://localhost:8800/legal", value)
+      .then((res) => {
+        // Update the state with the newly added category
+        setInfo([...info, res.data]);
+
+        // Clear the input field
+        setValue({ info_title: "", info_content: "" });
+        window.location.reload(true);
+      })
+      .catch((err) => {
+        console.error("Error adding category:", err);
+      });
+  };
 
   return (
     <div className="profile">
@@ -59,48 +114,45 @@ function Profile() {
       <div className="bottom">
         <div className="bottom-title">
           <div className="b-title">Legal Information</div>
-          <div className="b-link">Add Info</div>
-        </div>
-        <div className="b-detail">
-          <div className="content-titles">
-            Company Name: <p className="role">XY Corporation</p>
-          </div>
-          <div className="d-icon">
-            <ClearIcon />
+          <div className="b-link" onClick={toggle}>
+            Add Info
           </div>
         </div>
-        <div className="b-detail">
-          <div className="content-titles">
-            Date of Legalization: <p>2016 - 07 -11</p>
-          </div>
-          <div className="d-icon">
-            <ClearIcon />
-          </div>
+        <div className={`add-info ${showAdd ? "add-toggle" : ""}`}>
+          <input
+            type="text"
+            placeholder="Add title here"
+            value={value.info_title}
+            onChange={(e) => setValue({ ...value, info_title: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="Add detail here"
+            value={value.info_content}
+            onChange={(e) =>
+              setValue({ ...value, info_content: e.target.value })
+            }
+          />
+          <AddIcon
+            className="info-add"
+            onClick={() => {
+              handleAddInfo();
+              toggle();
+            }}
+          />
         </div>
-        <div className="b-detail">
-          <div className="content-titles">
-            Business Address: <p>Debreziet Ethiopia / near the ABC building</p>
-          </div>
-          <div className="d-icon">
-            <ClearIcon />
-          </div>
-        </div>
-        <div className="b-detail">
-          <div className="content-titles">
-            Type of Business Entity: <p>Sole Proprietorship</p>
-          </div>
-          <div className="d-icon">
-            <ClearIcon />
-          </div>
-        </div>
-        <div className="b-detail">
-          <div className="content-titles">
-            Certified by: <p>Ethiopian quality assessment</p>
-          </div>
-          <div className="d-icon">
-            <ClearIcon />
-          </div>
-        </div>
+        {info.map((info) => {
+          return (
+            <div className="b-detail">
+              <div className="content-titles">
+                {info.info_title}: <p className="role">{info.info_content}</p>
+              </div>
+              <div className="d-icon">
+                <ClearIcon onClick={() => handleDelete(info.info_id)} />
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -93,6 +93,41 @@
       }
     }
 
+    .add-info {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      gap: 20px;
+
+      input {
+        width: 350px;
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 30px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .info-add {
+        color: #6439ff;
+        cursor: pointer;
+        background-color: rgb(245, 238, 238);
+        font-size: 27px;
+        border-radius: 50%;
+        &:hover {
+          background-color: rgb(235, 225, 225);
+        }
+      }
+    }
+
+    .add-toggle {
+      display: none;
+    }
+
     .b-detail {
       display: flex;
       justify-content: space-between;
@@ -106,7 +141,7 @@
         }
         .role {
           padding: 2px 5px;
-          background-color: rgba(0, 128, 0, 0.103);
+          background-color: rgba(0, 128, 0, 0.075);
           color: green;
         }
       }
