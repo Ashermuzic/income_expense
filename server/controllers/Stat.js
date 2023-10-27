@@ -76,11 +76,13 @@ export const getNetEarningsLast30Days = (req, res) => {
         const totalExpenses = expenseResult[0].totalExpenses || 0;
         const netEarnings = totalIncome - totalExpenses;
 
-        return res.status(200).json({
-          totalIncome,
-          totalExpenses,
-          netEarnings,
-        });
+        return res.status(200).json([
+          {
+            totalIncome,
+            totalExpenses,
+            netEarnings,
+          },
+        ]);
       }
     );
   });

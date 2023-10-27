@@ -6,12 +6,8 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import { Link } from "react-router-dom";
 
-const Widget = ({ type }) => {
+const Widget = ({ type, amount, diff }) => {
   let data;
-
-  //temporary
-  const amount = 100;
-  const diff = 20;
 
   switch (type) {
     case "products":
@@ -49,7 +45,6 @@ const Widget = ({ type }) => {
     case "expenses":
       data = {
         title: "EXPENSE",
-        isMoney: true,
         link: "View all expenses",
         icon: (
           <MonetizationOnOutlinedIcon
