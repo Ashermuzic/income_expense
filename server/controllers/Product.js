@@ -113,3 +113,12 @@ export const getDangerProductCount = (req, res) => {
     return res.status(200).json({ count: dangerProductCount });
   });
 };
+
+export const countProducts = (req, res) => {
+  const q = "SELECT count(product_id) as products FROM products";
+
+  db.query(q, (err, result) => {
+    if (err) return res.json({ Error: "Error in running query" });
+    return res.json(result);
+  });
+};

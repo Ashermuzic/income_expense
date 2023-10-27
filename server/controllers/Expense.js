@@ -119,3 +119,12 @@ export const addExpense = (req, res) => {
     });
   });
 };
+
+export const countExpenses = (req, res) => {
+  const q = "SELECT count(expense_id) as expenses FROM expense";
+
+  db.query(q, (err, result) => {
+    if (err) return res.json({ Error: "Error in running query" });
+    return res.json(result);
+  });
+};

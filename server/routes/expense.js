@@ -9,6 +9,7 @@ import {
   deleteExpense,
   updateExpense,
   getExpensesCat,
+  countExpenses,
 } from "../controllers/Expense.js";
 const router = express.Router();
 
@@ -25,6 +26,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.get("/", getExpenses);
+router.get("/count", countExpenses);
 router.get("/cat/", getExpensesCat);
 router.get("/:id", getExpense);
 router.post("/", upload.single("file"), addExpense);

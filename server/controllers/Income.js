@@ -89,3 +89,12 @@ export const addIncome = (req, res) => {
     });
   });
 };
+
+export const countIncomes = (req, res) => {
+  const q = "SELECT count(income_id) as incomes FROM income";
+
+  db.query(q, (err, result) => {
+    if (err) return res.json({ Error: "Error in running query" });
+    return res.json(result);
+  });
+};
