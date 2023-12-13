@@ -79,4 +79,13 @@
       }
     }
   }
+
+  .login {
+    .loginBody {
+      .b-illustration {
+        -webkit-filter: invert(1);
+        -webkit-filter: grayscale(80%); /* Safari 6.0 - 9.0 */
+      }
+    }
+  }
 }
