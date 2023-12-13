@@ -142,6 +142,7 @@ const New = ({ inputs, title }) => {
                   <input
                     type={input.type}
                     name={input.name}
+                    min="0"
                     placeholder={input.placeholder}
                     onChange={handleInputChange}
                   />

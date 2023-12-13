@@ -110,12 +110,14 @@ const NewExpense = ({ inputs, title }) => {
                     <input
                       type={input.type}
                       name={input.name}
+                      min="0"
                       onChange={handleFileChange}
                     />
                   ) : (
                     <input
                       type={input.type}
                       name={input.name}
+                      min="0"
                       value={formData[input.name]}
                       placeholder={input.placeholder}
                       onChange={handleInputChange}

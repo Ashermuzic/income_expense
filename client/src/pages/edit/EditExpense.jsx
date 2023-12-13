@@ -162,6 +162,7 @@ const EditExpense = ({ inputs, title }) => {
                     <input
                       type={input.type}
                       name={input.name}
+                      min="0"
                       value={formData[input.name]}
                       placeholder={input.placeholder}
                       readOnly // Add the readOnly attribute here
@@ -170,6 +171,7 @@ const EditExpense = ({ inputs, title }) => {
                     <input
                       type={input.type}
                       name={input.name}
+                      min="0"
                       value={formData[input.name]}
                       placeholder={input.placeholder}
                       onChange={handleInputChange}
