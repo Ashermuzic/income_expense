@@ -95,10 +95,16 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Stats</span>
-          </li>
+          <Link to="/stats" style={{ textDecoration: "none" }}>
+            <li
+              style={{
+                background: isActive("/stats") ? "#9385db38" : "",
+              }}
+            >
+              <InsertChartIcon className="icon" />
+              <span>Stats</span>
+            </li>
+          </Link>
           <Link to="/goals" style={{ textDecoration: "none" }}>
             <li
               style={{

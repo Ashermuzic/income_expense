@@ -32,6 +32,7 @@ import ToolList from "./pages/list/ToolList";
 import GoalList from "./pages/list/GoalList";
 import ProfileList from "./pages/list/ProfileList";
 import EditProfile from "./pages/edit/EditProfile";
+import StatList from "./pages/list/StatList";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -84,6 +85,9 @@ function App() {
                 <EditExpense inputs={expenseEditInputs} title="Edit Expense" />
               }
             />
+          </Route>
+          <Route path="/stats">
+            <Route index element={<StatList />} />
           </Route>
           <Route path="/goals">
             <Route index element={<GoalList />} />

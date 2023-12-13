@@ -1,14 +1,14 @@
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
-import "./home.scss";
-import Widget from "../../components/widget/Widget";
-import Featured from "../../components/featured/Featured";
-import Chart from "../../components/chart/Chart";
-import Table from "../../components/table/Table";
+import Sidebar from "../../sidebar/Sidebar";
+import Navbar from "../../navbar/Navbar";
+import "./stat.scss";
+import Widget from "../../widget/Widget";
+import Featured from "../../featured/Featured";
+import Chart from "../../chart/Chart";
+import Table from "../../table/Table";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Home = () => {
+const Stat = () => {
   const username = localStorage.getItem("username");
   const isAuthenticated = !!username;
 
@@ -69,23 +69,18 @@ const Home = () => {
 
   return isAuthenticated ? (
     <div className="home">
-      <Sidebar />
-
       <div className="homeContainer">
-        <Navbar />
-        <div className="widgets">
-          <Widget type="products" amount={productsCount} diff={20} />
-          <Widget type="incomes" amount={incomesCount} diff={20} />
-          <Widget type="expenses" amount={expensesCount} diff={20} />
-          <Widget type="history" amount={netEarning} diff={20} />
-        </div>
         <div className="charts">
           <Featured />
           <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
+        </div>
+        <div className="listContainer">
+          <div className="listTitle">Latest Transactions</div>
+          <Table />
         </div>
       </div>
     </div>
   ) : null;
 };
 
-export default Home;
+export default Stat;
