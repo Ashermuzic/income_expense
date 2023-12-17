@@ -7,17 +7,41 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
-const data = [
-  { name: "January", Total: 1200 },
-  { name: "February", Total: 2100 },
-  { name: "March", Total: 800 },
-  { name: "April", Total: 1600 },
-  { name: "May", Total: 900 },
-  { name: "June", Total: 1700 },
-];
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Chart = ({ aspect, title }) => {
+  const [data, setData] = useState([]);
+
+  const getMonthName = (monthNumber) => {
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return monthNames[monthNumber - 1];
+  };
+
+  useEffect(() => {
+    axios.get("http://localhost:8800/stats/monthly_earning").then((res) => {
+      // Assuming res.data is an array of objects with properties month and total_revenue
+      const transformedData = res.data.map(({ month, total_revenue }) => ({
+        name: getMonthName(parseInt(month.split("-")[1])),
+        Total: total_revenue,
+      }));
+      setData(transformedData);
+    });
+  }, []);
+
   return (
     <div className="chart">
       <div className="title">{title}</div>
