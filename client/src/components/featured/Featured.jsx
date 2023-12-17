@@ -27,8 +27,8 @@ const Featured = () => {
   const formattedPercentage =
     rawPercentage > 100
       ? "> 100%"
-      : rawPercentage < 0
-      ? "< 0%"
+      : rawPercentage < -100
+      ? "< -100%"
       : `${rawPercentage.toFixed(2)}%`;
 
   return (
