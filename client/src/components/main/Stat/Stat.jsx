@@ -75,7 +75,7 @@ const Stat = () => {
           <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
         </div>
         <div className="listContainer">
-          <div className="listTitle">Latest Transactions</div>
+          <div className="listTitle">High-value Transaction</div>
           <Table />
         </div>
       </div>

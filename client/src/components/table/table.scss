@@ -12,17 +12,32 @@
     }
   }
 
+  .cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .linkBox {
+      display: flex;
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: darkblue;
+      border: 1px dotted rgba(0, 0, 139, 0.596);
+      cursor: pointer;
+    }
+  }
+
   .status {
     padding: 5px;
     border-radius: 5px;
 
-    &.Approved {
+    &.income {
       color: green;
       background-color: rgba(0, 128, 0, 0.151);
     }
-    &.Pending {
-      color: goldenrod;
-      background-color: rgba(189, 189, 3, 0.103);
+    &.expense {
+      color: red;
+      background-color: rgba(189, 3, 19, 0.103);
     }
   }
 }

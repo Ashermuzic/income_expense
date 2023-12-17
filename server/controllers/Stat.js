@@ -82,3 +82,49 @@ FROM (
     return res.json(result);
   });
 };
+
+export const mostRecentTransaction = (req, res) => {
+  // const q = `SELECT * FROM (
+  //     SELECT 'income' AS type, income_id AS product_id, amount, price, price * amount AS total_price, date, description
+  //     FROM income
+  //     ORDER BY total_price DESC
+  //     LIMIT 5
+  // ) AS top_income_expense
+  // UNION ALL
+  // SELECT * FROM (
+  //     SELECT 'expense' AS type, expense_id AS product_id, amount, price, price * amount AS total_price, date, description
+  //     FROM expense
+  //     ORDER BY total_price DESC
+  //     LIMIT 5
+  // ) AS top_expense_income
+  // ORDER BY total_price DESC
+  // LIMIT 5;
+  //   `;
+
+  const q = `SELECT * FROM (
+    SELECT 'income' AS type, income.income_id AS product_id, income.amount, income.price, income.price * income.amount AS total_price, income.date, income.description, products.product_name
+    FROM income
+    LEFT JOIN products ON income.product_id = products.product_id
+    ORDER BY total_price DESC
+    LIMIT 5
+) AS top_income_expense
+
+UNION ALL
+
+SELECT * FROM (
+    SELECT 'expense' AS type, expense.expense_id AS product_id, expense.amount, expense.price, expense.price * expense.amount AS total_price, expense.date, expense.description, expense.expense_name AS product_name
+    FROM expense
+    ORDER BY total_price DESC
+    LIMIT 5
+) AS top_expense_income
+
+ORDER BY total_price DESC
+LIMIT 5;
+
+`;
+
+  db.query(q, (err, result) => {
+    if (err) return res.json({ Error: "Error in running query" });
+    return res.json(result);
+  });
+};
