@@ -61,3 +61,24 @@ export const monthlyEarning = (req, res) => {
     return res.json(result);
   });
 };
+
+export const featuredMonth = (req, res) => {
+  const q = `SELECT
+  SUM(CASE WHEN type = 'income' THEN price * amount ELSE 0 END) AS total_income,
+  SUM(CASE WHEN type = 'expense' THEN price * amount ELSE 0 END) AS total_expense
+FROM (
+  SELECT 'income' AS type, price, amount
+  FROM income
+  WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())
+  UNION ALL
+  SELECT 'expense' AS type, price, amount
+  FROM expense
+  WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())
+) AS combined_data;
+`;
+
+  db.query(q, (err, result) => {
+    if (err) return res.json({ Error: "Error in running query" });
+    return res.json(result);
+  });
+};
